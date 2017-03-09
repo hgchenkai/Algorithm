@@ -1,0 +1,21 @@
+/*Greatest Common Diviso
+ * 欧几里得算法：
+ * gcd(m,n)=gcd(n,m mod n)
+ * Created by chenkai on 2017/3/9.
+ */
+public class GreatestCommonDiviso {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.printf("请输入整数m，n：");
+        long d = gcd(sc.nextLong(), sc.nextLong());
+        System.out.printf(d + "");
+    }
+
+    private static long gcd(long m, long n) {
+        if (n == 0) {
+            return m;
+        } else {
+            return gcd(n, m % n);
+        }
+    }
+}
