@@ -1,0 +1,41 @@
+/*
+ *假设每一步可以爬一格或者两个梯子，爬一部n格梯子共有多少种方法
+ *Created by chenkai on 2017/3/9.
+ */
+public class ClimbTheLadder {
+    public static void main(String[] args) {
+        System.out.printf("请输入梯子的格数(正整数)：");
+        Scanner sc = new Scanner(System.in);
+        long n=sc.nextLong();
+        climb(n);
+        climbTwo(n);
+    }
+
+    private static void climb(long n) {
+        long count = 0;
+        long time = System.currentTimeMillis();
+        for (long i = 0; i <= n / 2; i++) {
+            for (long k = 0; k <= (n - 2 * i); k++) {
+                if (n == (k + 2 * i)) {
+                    System.out.printf("需要爬%d次一格，%d次两格\n", k, i);
+                    count++;
+                }
+            }
+        }
+        System.out.printf("共有%d种爬法", count);
+        System.out.printf("共耗时:" + (System.currentTimeMillis() - time)+"\n");
+    }
+
+    private static void climbTwo(long n) {
+        long count=0;
+        long time = System.currentTimeMillis();
+        for(long i=n;i>=0;i--){
+            if ((n-i)%2==0){
+                System.out.printf("需要爬%d次一格，%d次两格\n",i,n-i);
+                count++;
+            }
+        }
+        System.out.printf("共有%d种爬法", count);
+        System.out.printf("共耗时:" + (System.currentTimeMillis() - time)+"\n");
+    }
+}
